@@ -1,0 +1,1675 @@
+{
+	"info": {
+		"_postman_id": "265d6f83-7499-410c-901d-4446d8393e18",
+		"name": "EventManagementSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13235689",
+		"_collection_link": "https://dark-astronaut-860749.postman.co/workspace/New-Team-Workspace~b428f624-9e6d-4beb-867a-23520ce14550/collection/13235689-265d6f83-7499-410c-901d-4446d8393e18?action=share&creator=13235689&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "abc@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "abc@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://c9d57c44-2f7a-4c42-b75f-ff3e021b183e.mock.pstmn.io/login",
+							"protocol": "https",
+							"host": [
+								"c9d57c44-2f7a-4c42-b75f-ff3e021b183e",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"message\": \"login successful!\",\r\n    \"AccessToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiJ94ArGgnEdOXJHYDox2WYad0_f68kyuJrGcrzWuDDwdN4\",\r\n    \"user\":{\r\n        \"first_name\": \"demo\",\r\n        \"last_name\": \"user\",\r\n        \"email\": \"abc@gmail.com\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "logout",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \" logout successful\",\n}"
+				}
+			]
+		},
+		{
+			"name": "maintainService",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/maintain",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"maintain"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/maintain",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"maintain"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"services\": [\n        {\n            \"service_id\": \"1\",\n            \"service_response\": \"ok\"\n        },\n        {\n            \"service_id\": \"1\",\n            \"service_response\": \"down\"\n        },\n        {\n            \"service_id\": \"3\",\n            \"service_response\": \"ok\"\n        },\n        {\n            \"service_id\": \"4\",\n            \"service_response\": \"down\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "eventDetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/events/:event_id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						":event_id"
+					],
+					"variable": [
+						{
+							"key": "event_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/events/:event_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								":event_id"
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "        {\"id\": 1,\r\n        \"event_name\": \"Tech Event wien\",\r\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\r\n        \"start_datetime\": 1567674000000,\r\n        \"end_datetime\": 1567706400000,\r\n        \"location\": \"Vienna\",\r\n        \"capacity\": 500,\r\n        \"tags\": [\"tech\", \"education\"]\r\n        }"
+				}
+			]
+		},
+		{
+			"name": "createEvent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/events/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n        \"event_name\": \"Tech Event wien\",\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n        \"start_datetime\": 1567674000000,\n        \"end_datetime\": 1567706400000,\n        \"location\": {\n\t\t\t\"country\":\"Mexico\",\n\t\t\t\"city\":\"mexico city\",\n\t\t\t\"zip\":5041,\n\t\t\t\"street\":\"Reberto Carlos\",\n\t\t\t\"street_number\":6\n\t\t\t},\n        \"capacity\": 500\n        }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/events/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "        {\r\n            \"message\": \"event creation successful\"\r\n        }"
+				}
+			]
+		},
+		{
+			"name": "updateEvent",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/events/:event_id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						":event_id"
+					],
+					"variable": [
+						{
+							"key": "event_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n        \"event_name\": \"Tech Event wien\",\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n        \"start_datetime\": 1567674000000,\n        \"end_datetime\": 1567706400000,\n        \"location\": {\n\t\t\t\"country\":\"Mexico\",\n\t\t\t\"city\":\"mexico city\",\n\t\t\t\"zip\":5041,\n\t\t\t\"street\":\"Reberto Carlos\",\n\t\t\t\"street_number\":6\n\t\t\t},\n        \"capacity\": 500\n        }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/events/:event_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								":event_id"
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "        {\r\n            \"message\": \"event update successful\"\r\n        }"
+				}
+			]
+		},
+		{
+			"name": "deleteEvent",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/events/:event_id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						":event_id"
+					],
+					"variable": [
+						{
+							"key": "event_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/events/:event_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								":event_id"
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "        {\r\n            \"message\": \"event deletion successful\"\r\n        }"
+				}
+			]
+		},
+		{
+			"name": "events",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/events",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/events",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"events\": [\r\n        {\"id\": 1,\r\n        \"event_name\": \"Tech Event wien\",\r\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\r\n        \"start_datetime\": 1567674000000,\r\n        \"end_datetime\": 1567706400000,\r\n        \"location\": \"Vienna\",\r\n        \"capacity\": 500, \r\n        \"tags\": [\"sport\", \"education\"]\r\n        },\r\n        {\"id\": 2,\r\n        \"event_name\": \"It Event Graz\",\r\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\r\n        \"start_datetime\": 1567674000000,\r\n        \"end_datetime\": 1567706400000,\r\n        \"location\": \"Graz\",\r\n        \"capacity\": 100,\r\n        \"tags\": [\"tech\", \"education\"]\r\n        },\r\n        {\"id\": 3,\r\n        \"event_name\": \"Job Event II\",\r\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\r\n        \"start_datetime\": 1567674000000,\r\n        \"end_datetime\": 1567706400000,\r\n        \"location\": \"Vienna\",\r\n        \"capacity\": 1000,\r\n        \"tags\": [\"sport\", \"education\"]\r\n        },\r\n        {\"id\": 4,\r\n        \"event_name\": \"Tech Event II\",\r\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\r\n        \"start_datetime\": 1567674000000,\r\n        \"end_datetime\": 1567706400000,\r\n        \"location\": \"Vienna\",\r\n        \"capacity\": 300,\r\n        \"tags\": [\"sport\", \"education\"]\r\n        },\r\n        {\"id\": 5,\r\n        \"event_name\": \"It Event II\",\r\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\r\n        \"start_datetime\": 1567674000000,\r\n        \"end_datetime\": 1567706400000,\r\n        \"location\": \"Graz\",\r\n        \"capacity\": 100,\r\n        \"tags\": [\"sport\"]\r\n        },\r\n        {\"id\": 6,\r\n        \"event_name\": \"Job Event III\",\r\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\r\n        \"start_datetime\": 1567674000000,\r\n        \"end_datetime\": 1567706400000,\r\n        \"location\": \"Vienna\",\r\n        \"capacity\": 10,\r\n        \"tags\": [\"education\"]\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "bookmarks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/bookmarks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"bookmarks"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bookmarks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bookmarks"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"bookmarks\": [\n        {\n            \"id\": 1,\n            \"event_name\": \"Tech Event wien\",\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n            \"start_datetime\": 1567674000000,\n            \"end_datetime\": 1567706400000,\n            \"location\": \"Vienna\",\n            \"capacity\": 500,\n            \"tags\": [\"tech\", \"education\"]\n        },\n        {\n            \"id\": 2,\n            \"event_name\": \"It Event Graz\",\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n            \"start_datetime\": 1567674000000,\n            \"end_datetime\": 1567706400000,\n            \"location\": \"Graz\",\n            \"capacity\": 100,\n            \"tags\": [\"tech\"]\n        },\n        {\n            \"id\": 3,\n            \"event_name\": \"Job Event II\",\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n            \"start_datetime\": 1567674000000,\n            \"end_datetime\": 1567706400000,\n            \"location\": \"Vienna\",\n            \"capacity\": 1000,\n            \"tags\": [\"education\"]\n        },\n        {\n            \"id\": 4,\n            \"event_name\": \"Job Event III\",\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n            \"start_datetime\": 1567674000000,\n            \"end_datetime\": 1567706400000,\n            \"location\": \"Linz\",\n            \"capacity\": 900,\n            \"tags\": [\"tech\"]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "markEvent",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/events/:event_id/mark",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						":event_id",
+						"mark"
+					],
+					"variable": [
+						{
+							"key": "event_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/events/:event_id/mark",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								":event_id",
+								"mark"
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"message\": \"Event added to bookmark list!\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "unmarkEvent",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/events/:event_id/unmark",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						":event_id",
+						"unmark"
+					],
+					"variable": [
+						{
+							"key": "event_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/events/:event_id/unmark",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								":event_id",
+								"unmark"
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Event removed from bookmark list!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "tags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tags",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tags"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tags",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\"tags\": [\r\n    {\"id\": 1,\r\n    \"name\": \"sport\"\r\n    },\r\n    {\"id\": 2,\r\n    \"name\": \"education\"\r\n    },\r\n    {\"id\": 3,\r\n    \"name\": \"technology\"\r\n    },\r\n    {\"id\": 1,\r\n    \"name\": \"entertainment\"\r\n    },\r\n    {\"id\": 1,\r\n    \"name\": \"fun\"\r\n    },\r\n    {\"id\": 1,\r\n    \"name\": \"social\"\r\n    }\r\n]}"
+				}
+			]
+		},
+		{
+			"name": "tagEvent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tag_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "event_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/event/tag",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"event",
+						"tag"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "tag_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "event_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/event/tag",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"event",
+								"tag"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"tag added successfully!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "untagEvent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "event_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tag_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/event/untag",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"event",
+						"untag"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "event_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "tag_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/event/untag",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"event",
+								"untag"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"tag removed successfully!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/search?query=\"event title\"",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "\"event title\""
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/search?query=\"event title\"",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "\"event title\""
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"events\": [\r\n        {\"id\": 1,\r\n        \"event_name\": \"Tech Event wien\",\r\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\r\n        \"start_datetime\": 1567674000000,\r\n        \"end_datetime\": 1567706400000,\r\n        \"location\": \"Vienna\",\r\n        \"capacity\": 500,\r\n        \"tags\": [\"tech\", \"education\"]\r\n        },\r\n        {\"id\": 2,\r\n        \"event_name\": \"It Event Graz\",\r\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\r\n        \"start_datetime\": 1567674000000,\r\n        \"end_datetime\": 1567706400000,\r\n        \"location\": \"Graz\",\r\n        \"capacity\": 100,\r\n        \"tags\": [\"tech\", \"education\"]\r\n        },\r\n        {\"id\": 3,\r\n        \"event_name\": \"Job Event II\",\r\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\r\n        \"start_datetime\": 1567674000000,\r\n        \"end_datetime\": 1567706400000,\r\n        \"location\": \"Vienna\",\r\n        \"capacity\": 1000,\r\n        \"tags\": [\"tech\", \"education\"]\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "calendarExport",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"attendee_id\": 1234,\r\n    \"format\": [\"JSON\",\"XML\",\"ICS\"],\r\n    \"export_type\": [\"tagged\",\"confirmed_attendance\",\"marked\"]\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/export-calendar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"export-calendar"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"attendee_id\": 1234,\r\n    \"format\": \"JSON\",\r\n    \"export_type\": \"tagged\",\r\n    \"data\": [\r\n        {\r\n            \"event_id\": 5678,\r\n            \"event_name\": \"Tech Conference\",\r\n            \"event_date\": \"2023-03-25\",\r\n            \"tags\": [\"Technology\", \"Innovation\"],\r\n            \"feedback_score\": 4.5,\r\n            \"attendance_status\": \"Confirmed\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/export-calendar?attendee_id=1&format=JSON&export_type=tagged",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"export-calendar"
+							],
+							"query": [
+								{
+									"key": "attendee_id",
+									"value": "1"
+								},
+								{
+									"key": "format",
+									"value": "JSON"
+								},
+								{
+									"key": "export_type",
+									"value": "tagged"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"message\": \"calendar exported successfully!\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "generateReport",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event_id\": \"12345\",\r\n    \"report_type\": [\"event_feedback\", \"bookmark\", \"event_attendance\",\"analytics_view\"],\r\n    \"start_date\": \"2023-01-01\",\r\n    \"end_date\": \"2023-01-31\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/generate-report",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"generate-report"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"event_id\": \"12345\",\r\n    \"report_type\": \"event_feedback\",\r\n    \"start_date\": \"2023-01-01\",\r\n    \"end_date\": \"2023-01-31\",\r\n    \"data\": [\r\n        {\r\n            \"attendee_id\": \"attendee_1\",\r\n            \"feedback_text\": \"Great event, loved the speakers!\",\r\n            \"rating\": 4.5\r\n        },\r\n        {\r\n            \"attendee_id\": \"attendee_2\",\r\n            \"feedback_text\": \"Could have been better, too long and too many breaks\",\r\n            \"rating\": 2.5\r\n        },\r\n        {\r\n            \"attendee_id\": \"attendee_3\",\r\n            \"feedback_text\": \"Awesome event, I learned a lot\",\r\n            \"rating\": 5.0\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/generate-report?event_id=12345&report_type=event_feedback",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"generate-report"
+							],
+							"query": [
+								{
+									"key": "event_id",
+									"value": "12345"
+								},
+								{
+									"key": "report_type",
+									"value": "event_feedback"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Report generated successfully!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "notify-attendees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/events/:eventId/notify-attendees",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						":eventId",
+						"notify-attendees"
+					],
+					"variable": [
+						{
+							"key": "eventId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "notify-attendees",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/events/:eventId/notify-attendees",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								":eventId",
+								"notify-attendees"
+							],
+							"variable": [
+								{
+									"key": "eventId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"confirmation\": \"Users have been notified!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "send-message-to-attendees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"Test message to all attendees!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/events/:eventId/send-message-to-attendees",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						":eventId",
+						"send-message-to-attendees"
+					],
+					"variable": [
+						{
+							"key": "eventId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "send-message-to-attendees",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/events/:eventId/send-message-to-attendees",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								":eventId",
+								"send-message-to-attendees"
+							],
+							"variable": [
+								{
+									"key": "eventId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\":  \"Test message to all attendees!\",\n    \"confirmation\": \"Message have been sent!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "attend",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/events/:eventId/attend",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						":eventId",
+						"attend"
+					],
+					"variable": [
+						{
+							"key": "eventId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "attend",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/events/:eventId/attend",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								":eventId",
+								"attend"
+							],
+							"variable": [
+								{
+									"key": "eventId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"confirmation\": \"Attending successful!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "{{url}}/events/:event_id/feedback",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						":event_id",
+						"feedback"
+					],
+					"variable": [
+						{
+							"key": "event_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "feedback",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"feedback_id\": 1,\n    \"event_id\" : 1, \n    \"content_review\": \" this was a nice event and as expected\" , \n    \"suitable_location\": 4, \n    \"description_accuracy\": 4, \n    \"rate\": 5  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/events/:event_id/feedback",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								":event_id",
+								"feedback"
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"reply_message\": \"thank you for your feedback\"\n}"
+				}
+			]
+		},
+		{
+			"name": "feedbacks",
+			"request": {
+				"auth": {
+					"type": "apikey"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/events/:event_id/feedbacks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						":event_id",
+						"feedbacks"
+					],
+					"variable": [
+						{
+							"key": "event_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "feedbacks",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/events/:event_id/feedbacks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								":event_id",
+								"feedbacks"
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n   \"feedbacks\":[\n       { \"feedback_id\": 1,\n        \"event_id\" : 1, \n        \"content_review\": \" this was a nice event and as expected\" , \n        \"suitable_location\": 4, \n        \"description_accuracy\": 4, \n        \"rate\": 5 \n        }\n   ] \n}"
+				}
+			]
+		},
+		{
+			"name": "recomendations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/recomendations",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"recomendations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "recomendations",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/recomendations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"recomendations"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"events\": [\n        {\"id\": 1,\n        \"event_name\": \"Tech Event wien\",\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n        \"start_datetime\": 1567674000000,\n        \"end_datetime\": 1567706400000,\n        \"location\": \"Vienna\",\n        \"capacity\": 500, \n        \"tags\": [\"sport\", \"education\"]\n        },\n        {\"id\": 2,\n        \"event_name\": \"It Event Graz\",\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n        \"start_datetime\": 1567674000000,\n        \"end_datetime\": 1567706400000,\n        \"location\": \"Graz\",\n        \"capacity\": 100,\n        \"tags\": [\"tech\", \"education\"]\n        },\n        {\"id\": 3,\n        \"event_name\": \"Job Event II\",\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n        \"start_datetime\": 1567674000000,\n        \"end_datetime\": 1567706400000,\n        \"location\": \"Vienna\",\n        \"capacity\": 1000,\n        \"tags\": [\"sport\", \"education\"]\n        },\n        {\"id\": 4,\n        \"event_name\": \"Tech Event II\",\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n        \"start_datetime\": 1567674000000,\n        \"end_datetime\": 1567706400000,\n        \"location\": \"Vienna\",\n        \"capacity\": 300,\n        \"tags\": [\"sport\", \"education\"]\n        },\n        {\"id\": 5,\n        \"event_name\": \"It Event II\",\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n        \"start_datetime\": 1567674000000,\n        \"end_datetime\": 1567706400000,\n        \"location\": \"Graz\",\n        \"capacity\": 100,\n        \"tags\": [\"sport\"]\n        },\n        {\"id\": 6,\n        \"event_name\": \"Job Event III\",\n        \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in\",\n        \"start_datetime\": 1567674000000,\n        \"end_datetime\": 1567706400000,\n        \"location\": \"Vienna\",\n        \"capacity\": 10,\n        \"tags\": [\"education\"]\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiJ94ArGgnEdOXJHYDox2WYad0_f68kyuJrGcrzWuDDwdN4",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://c9d57c44-2f7a-4c42-b75f-ff3e021b183e.mock.pstmn.io"
+		},
+		{
+			"key": "$id",
+			"value": "1",
+			"disabled": true
+		}
+	]
+}

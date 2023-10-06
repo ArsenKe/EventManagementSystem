@@ -1,0 +1,275 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: mysql-container
+    restart: always
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=em_db
+    ports:
+      - '3306:3306'
+    expose:
+      - 3306
+    networks:
+      - em-network
+    volumes:
+      - mysqldb:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD-SHELL", "curl localhost:3306" ]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.9.11-management-alpine
+    hostname: rabbitmq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    expose:
+      - 5672
+      - 15672
+    networks:
+      - em-network
+
+  apigateway_ms:
+    container_name: apigateway_ms
+    restart: unless-stopped
+    image: apigateway_ms:1.0.0
+    build:
+      context: ./apigateway_ms
+      dockerfile: Dockerfile
+    ports:
+      - '8090:8090'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/em_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - em-network
+
+  event-inventatory-ms:
+    container_name: event-inventatory-ms
+    hostname: event-inventatory-ms
+    restart: unless-stopped
+    image: event-inventatory-ms:1.0.0
+    build:
+      context: ./event_inventatory_ms
+      dockerfile: Dockerfile
+    ports:
+      - '8081:8081'
+    #    expose:
+    #      - 8081
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/em_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - em-network
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+
+  bookmark-ms:
+    container_name: bookmark-ms
+    hostname: bookmark-ms
+    restart: unless-stopped
+    image: bookmark-ms:1.0.0
+    build:
+      context: ./bookmark_ms
+      dockerfile: Dockerfile
+    ports:
+      - '8092:8092'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/em_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - em-network
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    links:
+      - rabbitmq
+
+  search-ms:
+    container_name: search-ms
+    hostname: search-ms
+    restart: unless-stopped
+    image: search-ms:1.0.0
+    build:
+      context: ./search_ms
+      dockerfile: Dockerfile
+    ports:
+      - '8083:8083'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/em_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - em-network
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    links:
+      - rabbitmq
+
+  attendance-ms:
+    container_name: attendance-ms
+    restart: unless-stopped
+    image: attendance_ms:1.0.0
+    build:
+      context: ./attendance_ms
+      dockerfile: Dockerfile
+    ports:
+      - '8086:8086'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/em_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - em-network
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    links:
+      - rabbitmq
+
+  notification-ms:
+    container_name: notification-ms
+    restart: unless-stopped
+    image: notification_ms:1.0.0
+    build:
+      context: ./notification_ms
+      dockerfile: Dockerfile
+    ports:
+      - '8087:8087'
+    networks:
+      - em-network
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
+
+  feedback-ms:
+    container_name: feedback-ms
+    hostname: feedback-ms
+    restart: unless-stopped
+    image: feedback_ms:1.0.0
+    build:
+      context: ./feedback_ms
+      dockerfile: Dockerfile
+    ports:
+      - '8084:8084'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/em_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - em-network
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    links:
+      - rabbitmq
+
+  recommendation-ms:
+    container_name: recommendation-ms
+    restart: unless-stopped
+    image: recommendation_ms:1.0.0
+    build:
+      context: ./recommendation_ms
+      dockerfile: Dockerfile
+    ports:
+      - '8085:8085'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/em_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - em-network
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    links:
+      - rabbitmq
+
+  report-analytics-ms:
+    container_name: report_analytics_ms
+    restart: unless-stopped
+    image: report-analytics-ms:1.0.0
+    build:
+      context: ./report_analytics_ms
+      dockerfile: Dockerfile
+    ports:
+      - '8082:8082'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/em_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - em-network
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    links:
+      - rabbitmq
+
+  calendar-export-ms:
+    container_name: calendar_export_ms
+    restart: unless-stopped
+    image: calendar_export_ms:1.0.0
+    build:
+      context: ./calendar_export_ms
+      dockerfile: Dockerfile
+    ports:
+      - '8089:8089'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/em_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - em-network
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    links:
+      - rabbitmq
+
+
+  em_frontend:
+    container_name: em_frontend
+    restart: unless-stopped
+    image: em_frontend:1.0.0
+    build:
+      context: ./em_frontend
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    networks:
+      - em-network
+
+networks:
+  em-network:
+
+volumes:
+  mysqldb:

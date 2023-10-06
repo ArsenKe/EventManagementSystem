@@ -1,0 +1,37 @@
+image: docker:latest
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+
+services:
+  - docker:dind
+
+stages:
+  - build
+#  - test
+
+build:
+  stage: build
+  tags:
+    - ase-0201
+  script:
+    - docker compose -f ./implementation/event_management/em_backend/docker-compose.yml build
+  only:
+    - master
+
+## Comment about test stage - everything should be ready for running the tests (for attendance_ms), but since gitlab-runner are not able to pull the mysql docker image from the docker registry, tests cannot run.
+
+#test:
+#  stage: test
+#  tags:
+#    - ase-0201
+#  before_script:
+#    - docker compose -f ./implementation/event_management/em_backend/docker-compose.yml up -d db
+#  script:
+#    - docker build -f attendance_ms/Dockerfile --target test .
+#  only:
+#    - master
+
+

@@ -1,0 +1,48 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: event-inventatory-ms
+          uri: http://event-inventatory-ms:8081/
+          predicates:
+            - Path=/event-inventory-ms/**
+          filters:
+            - StripPrefix=1
+        - id: bookmark-ms
+          uri: http://bookmark-ms:8092/
+          predicates:
+            - Path=/bookmark-ms/**
+          filters:
+            - StripPrefix=1
+        - id: search-ms
+          uri: http://search-ms:8083/
+          predicates:
+            - Path=/search-ms/**
+          filters:
+            - StripPrefix=1
+        - id: feedback-ms
+          uri: http://feedback-ms:8084/
+          predicates:
+            - Path=/feedback-ms/**
+          filters:
+            - StripPrefix=1
+        - id: recommendation-ms
+          uri: http://recommendation-ms:8085/
+          predicates:
+            - Path=/recommendation-ms/**
+          filters:
+            - StripPrefix=1
+        - id: attendance-ms
+          uri: http://attendance-ms:8086/
+          predicates:
+            - Path=/attendance-ms/**
+          filters:
+            - StripPrefix=1
+        - id: notification-ms
+          uri: http://notification-ms:8087/
+          predicates:
+            - Path=/notification-ms/**
+          filters:
+            - StripPrefix=1
+
+
